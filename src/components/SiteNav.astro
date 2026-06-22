@@ -1,0 +1,25 @@
+---
+const links = [
+  { id: "home", label: "首页" },
+  { id: "work", label: "作品" },
+  { id: "about", label: "关于" },
+  { id: "contact", label: "联系" },
+];
+---
+
+<nav
+  class="fixed right-4 top-1/2 z-50 flex -translate-y-1/2 flex-col gap-2 md:right-6"
+  aria-label="页面分区"
+>
+  {
+    links.map(({ id, label }) => (
+      <a
+        href={`#${id}`}
+        class="group flex items-center gap-2 rounded-full border border-white/40 bg-white/30 px-2 py-1 text-[11px] text-[#142a46] shadow-sm backdrop-blur-sm transition hover:bg-white/70 md:px-3"
+      >
+        <span class="hidden size-1.5 rounded-full bg-[#142a46] opacity-40 group-hover:opacity-100 md:inline" />
+        <span>{label}</span>
+      </a>
+    ))
+  }
+</nav>

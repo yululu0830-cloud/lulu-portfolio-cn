@@ -1,0 +1,153 @@
+---
+import { contact as img } from "../data/assets.ts";
+
+const email = "yululu0830@163.com";
+---
+
+<section
+  id="contact"
+  class="snap-section contact-section relative"
+  aria-label="联系我"
+>
+  {/* 背景：上白下蓝 */}
+  <div class="pointer-events-none absolute inset-0 z-0" aria-hidden="true">
+    <div class="h-[45%] bg-white"></div>
+    <div class="h-[55%] bg-[#d6efff]"></div>
+  </div>
+
+  {/* 内层 sticky：信封贴住视口；外层 section 拉长，用户滚动时驱动信纸上滑（--contact-p：0→1） */}
+  <div class="sticky top-0 z-10 flex h-[100dvh] items-center justify-center px-4">
+    <div class="envelope-stage relative mx-auto w-full max-w-[460px] -translate-y-[8%]" data-reveal style="container-type: inline-size;">
+      {/* 信封背面（含敞开的上盖 + 内里） */}
+      <img
+        src={img.envelopeBack}
+        alt=""
+        class="relative z-0 block w-full select-none"
+        width="853"
+        height="1024"
+        aria-hidden="true"
+      />
+
+      {/* 信纸：z 介于背面与正面之间；位移由 CSS 变量 --contact-p 控制 */}
+      <div
+        class="contact-letter absolute left-1/2 z-10"
+        style="bottom: 18%; width: 82%; container-type: inline-size;"
+      >
+        <div class="relative">
+          <img
+            src={img.letter}
+            alt=""
+            class="block w-full select-none"
+            width="1000"
+            height="1010"
+            aria-hidden="true"
+          />
+          {/* 信纸内文案，按容器宽度等比缩放（cqi = 1% 容器内联尺寸） */}
+          <div class="absolute inset-0 flex flex-col px-[10%] pt-[22%]">
+            <p
+              class="w-full text-center tracking-[0.18em] text-[#5f6d7f]"
+              style="font-size: 4.2cqi;"
+            >
+              欢迎各种合作和交友
+            </p>
+            <div
+              class="font-display text-[#142a46]"
+              style="margin-top: 7cqi; font-variation-settings: 'SOFT' 0, 'WONK' 1;"
+            >
+              <p class="font-bold leading-snug" style="font-size: 6.2cqi;">My Email：</p>
+              <a
+                href={`mailto:${email}`}
+                class="block break-all font-bold leading-snug underline-offset-4 hover:underline"
+                style="font-size: 6.2cqi;"
+              >
+                {email}
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* 信封正面（V 口袋）：z-index 最高，盖住信纸下半部分 */}
+      <div class="pointer-events-none absolute inset-x-0 bottom-0 z-20">
+        <div class="relative">
+          <img
+            src={img.envelopeFront}
+            alt=""
+            class="block w-full select-none"
+            width="1024"
+            height="758"
+            aria-hidden="true"
+          />
+          <p
+            class="font-display absolute left-1/2 -translate-x-1/2 font-bold tracking-[0.18em] text-[#5f6d7f]"
+            style="bottom: 14%; font-size: clamp(1.05rem, 4.2cqw, 1.75rem); font-variation-settings: 'SOFT' 0, 'WONK' 1"
+          >
+            CONTACT ME
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  /* 拉长 section 给滚动驱动信纸（contact 是最后一个板块，不影响后续） */
+  .contact-section {
+    min-height: 200vh;
+  }
+
+  /* 信纸位移：translateX(-50%) 居中；translateY = 起点 - 行程 × 进度
+     - --contact-p = 0：信纸落在「藏」位（图一）
+     - --contact-p = 1：信纸落在「露」位（图二）
+     调整 `--letter-start` 与 `--letter-travel` 即可改变藏/露幅度
+  */
+  .contact-letter {
+    --letter-start: 28%;
+    --letter-travel: 34%;
+    transform: translate3d(
+      -50%,
+      calc(var(--letter-start) - var(--letter-travel) * var(--contact-p, 0)),
+      0
+    );
+    will-change: transform;
+    transition: transform 80ms linear;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .contact-letter {
+      transform: translate3d(-50%, calc(var(--letter-start) - var(--letter-travel)), 0) !important;
+      transition: none;
+    }
+  }
+</style>
+
+<script>
+  (() => {
+    const section = document.getElementById("contact");
+    if (!section) return;
+
+    let ticking = false;
+    const update = () => {
+      const rect = section.getBoundingClientRect();
+      const scrollable = section.offsetHeight - window.innerHeight;
+      const passed = -rect.top;
+      const p =
+        scrollable > 0 ? Math.max(0, Math.min(1, passed / scrollable)) : 0;
+      section.style.setProperty("--contact-p", p.toFixed(4));
+      ticking = false;
+    };
+
+    window.addEventListener(
+      "scroll",
+      () => {
+        if (!ticking) {
+          requestAnimationFrame(update);
+          ticking = true;
+        }
+      },
+      { passive: true }
+    );
+    window.addEventListener("resize", update);
+    update();
+  })();
+</script>

@@ -1,0 +1,63 @@
+---
+import "../styles/global.css";
+import SiteNav from "../components/SiteNav.astro";
+import SectionHome from "../components/SectionHome.astro";
+import SectionWork from "../components/SectionWork.astro";
+import SectionAbout from "../components/SectionAbout.astro";
+import SectionContact from "../components/SectionContact.astro";
+---
+
+<html lang="zh-Hans">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="generator" content={Astro.generator} />
+    <meta
+      name="description"
+      content="卢卢 · UX/UI 设计师个人作品集 — 家居空间叙事、项目展示与联系方式。"
+    />
+    <title>卢卢 · 设计师作品集</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,700;0,9..144,900;1,9..144,400&family=Noto+Sans+SC:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body class="bg-white">
+    <SiteNav />
+    <main>
+      <SectionHome />
+      <SectionWork />
+      <SectionAbout />
+      <SectionContact />
+    </main>
+  </body>
+</html>
+
+<style is:global>
+  .snap-section {
+    scroll-snap-align: start;
+    scroll-snap-stop: normal;
+  }
+</style>
+
+<script>
+  // 滚动进场：淡入 + 向上位移（data-reveal 元素在进入视口时触发）
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("is-revealed");
+          observer.unobserve(entry.target);
+        }
+      });
+    },
+    { threshold: 0.12 }
+  );
+
+  document
+    .querySelectorAll("[data-reveal]")
+    .forEach((el) => observer.observe(el));
+</script>

@@ -1,0 +1,258 @@
+---
+import { home as img } from "../data/assets.ts";
+import RotatingText from "./RotatingText.jsx";
+
+const sublines = ["A Designer", "A Drawing Lover", "A Coding Learner"];
+---
+
+<section
+  id="home"
+  class="snap-section relative flex min-h-[100dvh] items-start justify-center overflow-x-hidden overflow-y-visible bg-[#d6efff] px-3 pb-12 pt-4 sm:px-5 sm:pt-6 2xl:min-h-[132dvh] 2xl:pb-24 2xl:pt-8"
+  aria-label="首页 · 家居空间"
+  data-home-root
+>
+  <div
+    id="home-cursor-tip"
+    class="pointer-events-none fixed z-[200] hidden max-w-[200px] rounded-md border border-white/30 bg-[#142a46]/90 px-2.5 py-1 text-[11px] font-medium tracking-wide text-white shadow-lg backdrop-blur-sm sm:text-sm"
+    role="tooltip"
+  ></div>
+
+  <!-- 视口 ≥1536px（2xl）：文字与装饰整体 1.5×；小屏靠布局收拢，不靠 transform 以免裁切 -->
+  <div
+    class="relative mx-auto w-full max-w-[1280px] min-h-[min(92dvh,52rem)] 2xl:min-h-[min(88dvh,58rem)]"
+  >
+    <!-- Decorative snow / bubble：雪花为六角星（三轴 60°、中心相交、等长）；圆 29×29 -->
+    <svg
+      class="pointer-events-none absolute left-[11%] top-[11%] w-5 opacity-90 sm:left-[13%] sm:top-[12%] sm:w-6"
+      width="32"
+      height="32"
+      viewBox="0 0 52 52"
+      fill="none"
+      aria-hidden="true"
+    >
+      <g
+        transform="translate(26 26)"
+        fill="none"
+        stroke="#27241E"
+        stroke-width="0.765"
+        stroke-linecap="butt"
+      >
+        <line x1="0" y1="-22.56" x2="0" y2="22.56"></line>
+        <line x1="0" y1="-22.56" x2="0" y2="22.56" transform="rotate(60)"></line>
+        <line x1="0" y1="-22.56" x2="0" y2="22.56" transform="rotate(120)"></line>
+      </g>
+    </svg>
+    <svg
+      class="pointer-events-none absolute right-[11%] top-[32%] w-5 opacity-75 sm:right-[13%] sm:w-6"
+      width="32"
+      height="32"
+      viewBox="0 0 52 52"
+      fill="none"
+      aria-hidden="true"
+    >
+      <g
+        transform="translate(26 26)"
+        fill="none"
+        stroke="#27241E"
+        stroke-width="0.765"
+        stroke-linecap="butt"
+      >
+        <line x1="0" y1="-22.56" x2="0" y2="22.56"></line>
+        <line x1="0" y1="-22.56" x2="0" y2="22.56" transform="rotate(60)"></line>
+        <line x1="0" y1="-22.56" x2="0" y2="22.56" transform="rotate(120)"></line>
+      </g>
+    </svg>
+    <svg
+      class="pointer-events-none absolute right-[17%] top-[9%] hidden w-7 md:block"
+      width="36"
+      height="42"
+      viewBox="0 0 52 52"
+      fill="none"
+      aria-hidden="true"
+    >
+      <g
+        transform="translate(26 26)"
+        fill="none"
+        stroke="#27241E"
+        stroke-width="0.765"
+        stroke-linecap="butt"
+      >
+        <line x1="0" y1="-22.56" x2="0" y2="22.56"></line>
+        <line x1="0" y1="-22.56" x2="0" y2="22.56" transform="rotate(60)"></line>
+        <line x1="0" y1="-22.56" x2="0" y2="22.56" transform="rotate(120)"></line>
+      </g>
+    </svg>
+    <svg
+      class="pointer-events-none absolute bottom-[17%] left-[20%] w-6 sm:bottom-[19%] sm:left-[22%]"
+      width="36"
+      height="42"
+      viewBox="0 0 52 52"
+      fill="none"
+      aria-hidden="true"
+    >
+      <g
+        transform="translate(26 26)"
+        fill="none"
+        stroke="#27241E"
+        stroke-width="0.765"
+        stroke-linecap="butt"
+      >
+        <line x1="0" y1="-22.56" x2="0" y2="22.56"></line>
+        <line x1="0" y1="-22.56" x2="0" y2="22.56" transform="rotate(60)"></line>
+        <line x1="0" y1="-22.56" x2="0" y2="22.56" transform="rotate(120)"></line>
+      </g>
+    </svg>
+    <svg
+      class="pointer-events-none absolute right-[12%] top-[19%] w-7 sm:right-[14%] sm:top-[20%]"
+      width="38"
+      height="38"
+      viewBox="0 0 29 29"
+      fill="none"
+      aria-hidden="true"
+    >
+      <circle cx="14.5" cy="14.5" r="13.5" fill="#FAFAFA" stroke="#ABABAB" stroke-width="1"></circle>
+    </svg>
+
+  <!-- Scene：收窄 max-w，四角向中线收拢，参考图更「满」 -->
+  <div
+    class="relative mx-auto h-[clamp(26rem,min(78dvh,52vw),52rem)] w-full max-w-[min(94vw,980px)] sm:h-[clamp(28rem,min(80dvh,50vw),56rem)] sm:max-w-[min(92vw,1040px)] md:max-w-[min(90vw,1120px)] lg:max-w-[min(88vw,1180px)] xl:max-w-[min(86vw,1240px)]"
+  >
+    <!-- Software cluster — 左上，向内收 -->
+    <div
+      class="absolute left-[8%] top-[5%] z-10 w-[clamp(7.5rem,14vw,15rem)] sm:left-[9%] sm:top-[6%] md:left-[10%] md:top-[6%] lg:w-[clamp(8rem,13vw,17.5rem)]"
+    >
+      <img src={img.software} alt="" class="w-full drop-shadow-md" width="249" height="141" />
+    </div>
+
+    <!-- Resume — 右上，略缩小 -->
+    <div
+      class="absolute right-[8%] top-[4%] z-10 w-[clamp(5.25rem,9vw,9.75rem)] sm:right-[9%] sm:top-[5%] sm:w-[clamp(5.4rem,8.8vw,10rem)] md:right-[10%] md:top-[5%] md:w-[clamp(5.5rem,8.5vw,10.25rem)] lg:w-[clamp(5.75rem,8vw,11rem)]"
+    >
+      <a
+        href="#about"
+        class="block cursor-pointer rounded-sm transition hover:opacity-95 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#142a46]/35"
+        aria-label="关于我 · 简历与经历"
+        data-cursor-tip="about"
+      >
+        <img src={img.resume} alt="" class="w-full drop-shadow-md" width="147" height="187" />
+      </a>
+    </div>
+
+    <!-- Center title（略上移，与四角装饰视觉更聚拢） -->
+    <div
+      class="absolute left-1/2 top-[13%] z-20 w-[92%] max-w-[min(92%,52rem)] -translate-x-1/2 text-center sm:top-[15%] md:top-[17%]"
+    >
+      <h1
+        class="font-display text-[clamp(2.15rem,calc(3.4vw+1.15rem),6.75rem)] font-black leading-[1.1] tracking-tight text-white drop-shadow-[0_4px_24px_rgba(171,210,235,0.95)]"
+        style="font-variation-settings: 'SOFT' 0, 'WONK' 1"
+      >
+        <span class="block">I’m lulu</span>
+        <RotatingText
+          client:load
+          texts={sublines}
+          mainClassName="block justify-center min-h-[1.2em]"
+          splitLevelClassName="overflow-hidden pb-[0.08em]"
+          staggerFrom="last"
+          initial={{ y: "100%" }}
+          animate={{ y: 0 }}
+          exit={{ y: "-120%" }}
+          staggerDuration={0.03}
+          transition={{ type: "spring", damping: 30, stiffness: 400 }}
+          rotationInterval={3500}
+        />
+      </h1>
+    </div>
+
+    <!-- 办公桌 — 左下，向内、略上移 -->
+    <a
+      href="#work"
+      class="absolute bottom-[9%] left-[6%] z-10 w-[clamp(12.5rem,28vw,26.5rem)] sm:bottom-[10%] sm:left-[7%] md:bottom-[11%] md:left-[8%] lg:w-[clamp(15rem,26vw,28rem)]"
+      aria-label="进入作品 · Work"
+      data-cursor-tip="work"
+    >
+      <img src={img.work} alt="" class="w-full select-none drop-shadow-lg" width="441" height="327" draggable="false" />
+    </a>
+
+    <!-- 绿植 — 介于桌与圆桌之间，略向中线 -->
+    <div
+      class="pointer-events-none absolute bottom-[12%] left-[39%] z-[8] w-[clamp(2.75rem,5vw,5rem)] sm:bottom-[13%] md:left-[41%] lg:left-[43%] xl:left-[44%]"
+    >
+      <img src={img.plant} alt="" class="w-full opacity-95" width="102" height="159" />
+    </div>
+
+    <!-- 右下：圆桌 + 柜子，向内、略上移 -->
+    <div
+      class="absolute bottom-[9%] right-[6%] z-10 flex items-end justify-end gap-[clamp(0.25rem,1vw,0.85rem)] sm:bottom-[10%] sm:right-[7%] md:bottom-[11%] md:right-[8%] lg:gap-4"
+    >
+      <div
+        class="relative w-[clamp(11.5rem,22vw,22.5rem)] shrink-0 sm:w-[clamp(12.5rem,21vw,24rem)] lg:w-[clamp(13rem,20vw,26rem)]"
+      >
+        <img src={img.table} alt="" class="w-full drop-shadow-xl" width="400" height="172" />
+        <!-- 个人照片：与电话同用 left 百分比，间距随圆桌等比缩放；无 hover 白边 -->
+        <a
+          href="#about"
+          class="absolute left-[26%] top-[-12%] z-10 w-[19%] rounded-sm transition hover:opacity-95 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#142a46]/35"
+          aria-label="关于我"
+          data-cursor-tip="about"
+        >
+          <img src={img.avatar} alt="" class="rounded-sm" width="84" height="93" />
+        </a>
+        <!-- 电话：靠近相框一侧，随圆桌变宽 -->
+        <a
+          href="#contact"
+          class="absolute left-[50%] top-[-9%] z-10 w-[20%] rounded-sm transition hover:opacity-95 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#142a46]/35"
+          aria-label="联系我 · Contact"
+          data-cursor-tip="contact"
+        >
+          <img src={img.contact} alt="" class="rounded-sm" width="95" height="78" />
+        </a>
+      </div>
+      <div
+        class="mb-[2px] w-[clamp(4rem,8vw,7.5rem)] shrink-0 lg:w-[clamp(4.5rem,7.5vw,8rem)]"
+      >
+        <img src={img.cabinet} alt="" class="w-full opacity-95 drop-shadow-md" width="137" height="343" />
+      </div>
+    </div>
+  </div>
+  </div>
+</section>
+
+<script>
+  const root = document.querySelector("[data-home-root]");
+  const tipEl = document.getElementById("home-cursor-tip");
+
+  if (root && tipEl) {
+    const hotspots = root.querySelectorAll<HTMLElement>("[data-cursor-tip]");
+    let activeLabel = "";
+
+    const showTip = (label: string) => {
+      activeLabel = label;
+      tipEl.textContent = label;
+      tipEl.classList.remove("hidden");
+    };
+
+    const hideTip = () => {
+      activeLabel = "";
+      tipEl.classList.add("hidden");
+    };
+
+    const moveTip = (e: MouseEvent) => {
+      if (!activeLabel) return;
+      const pad = 14;
+      const x = e.clientX + pad;
+      const y = e.clientY + 8;
+      tipEl.style.left = `${Math.min(x, window.innerWidth - tipEl.offsetWidth - 8)}px`;
+      tipEl.style.top = `${Math.min(y, window.innerHeight - tipEl.offsetHeight - 8)}px`;
+    };
+
+    hotspots.forEach((el) => {
+      const label = el.getAttribute("data-cursor-tip") ?? "";
+      el.addEventListener("mouseenter", (e) => {
+        showTip(label);
+        moveTip(e as MouseEvent);
+      });
+      el.addEventListener("mouseleave", hideTip);
+      el.addEventListener("mousemove", (e) => moveTip(e));
+    });
+  }
+</script>

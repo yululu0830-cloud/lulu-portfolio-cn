@@ -1,0 +1,376 @@
+---
+import { about as img } from "../data/assets.ts";
+import {
+  aboutHero,
+  aboutStages,
+  aboutEducation,
+  aboutInternships,
+  aboutAwards,
+} from "../data/aboutContent.ts";
+
+const awardIcons: Record<string, string> = {
+  awardMedal:  img.awardMedal,
+  awardTrophy: img.awardTrophy,
+  awardCert:   img.awardCert,
+};
+
+const STAGES = aboutStages.length; // 当前 2，之后增加时自动生效
+---
+
+<section id="about" class="snap-section bg-white pb-24 pt-10 md:pb-32 md:pt-16" aria-label="关于我">
+  <div class="mx-auto w-full max-w-[1280px] px-4 md:px-6">
+    <!-- Hero -->
+    <header class="relative mb-16 md:mb-20 md:pl-[clamp(0px,12vw,240px)]">
+      <div data-reveal class="relative flex flex-col items-center gap-6 md:flex-row md:items-start md:gap-10">
+        <div
+          class="flex size-[140px] shrink-0 items-start justify-center rounded-full bg-[#d6efff] p-2 md:absolute md:-left-4 md:top-12 md:size-[189px]"
+        >
+          <div class="relative mt-1 size-[130px] overflow-hidden rounded-full md:size-[173px]">
+            <img
+              src={img.heroAvatar}
+              alt=""
+              class="absolute left-[-7%] top-[-6%] h-[115%] w-[115%] max-w-none object-cover"
+              width="173"
+              height="174"
+            />
+          </div>
+        </div>
+        <h2
+          class="text-center text-[clamp(1.75rem,4vw,4rem)] font-semibold leading-tight tracking-tight text-[#142a46] md:pl-[200px] md:text-left"
+        >
+          {aboutHero.titleLines.map((line) => <span class="block">{line}</span>)}
+        </h2>
+      </div>
+      <p
+        data-reveal
+        data-reveal-delay="1"
+        class="mt-6 max-w-sm text-right text-xs uppercase leading-relaxed tracking-widest text-[#0f172a]/60 md:ml-auto md:mt-4"
+      >
+        {aboutHero.tagline}
+      </p>
+    </header>
+
+    <div class="flex flex-col gap-16 md:gap-20">
+      <!-- ABOUT ME：sticky 容器 + 滚动交叉淡入淡出 -->
+      <div data-reveal id="about-story-wrapper" style={`min-height: ${STAGES * 100}vh`} class="relative">
+        {/* section 标签：随外层 data-reveal 进场后就固定显示 */}
+        <div class="sticky top-0 pt-10 pb-4 bg-white z-10">
+          <div class="mb-2 flex flex-col gap-4">
+            <div class="border-l border-[#9ca3af] pl-[17px]">
+              <p class="text-xs font-medium uppercase tracking-[0.2em] text-[#9ca3af]">About me</p>
+            </div>
+            <div class="h-px w-full bg-neutral-300" />
+          </div>
+        </div>
+
+        {/* Sticky 故事区 */}
+        <div class="sticky top-[68px] z-0 flex items-center bg-white" style="height: calc(100vh - 68px);">
+          {/* Stage 1 */}
+          <div id="about-stage-1" class="about-stage absolute inset-0 flex items-center">
+            <div class="mx-auto grid w-full max-w-[860px] items-center gap-14 px-4 md:grid-cols-12 md:gap-20 md:px-6">
+              <div class="md:col-span-5">
+                <div class="relative mx-auto w-full max-w-[340px] md:mx-0 md:max-w-none">
+                  <div class="polaroid relative p-3 pb-16 shadow-[0_18px_40px_-12px_rgba(20,42,70,0.18),0_4px_10px_rgba(20,42,70,0.06)] md:p-4 md:pb-20" style="background:#D6EFFF; transform:rotate(-2.4deg);">
+                    <div class="overflow-hidden rounded-[2px]">
+                      <img src={img.stage1Photo} alt="卢卢肖像 · 海边" class="block h-auto w-full object-cover" width="900" height="900" loading="lazy" />
+                    </div>
+                    <img src={img.stickerClip} alt="" class="pointer-events-none absolute -top-10 left-[16%] z-10 h-auto w-[88px] -rotate-3 select-none drop-shadow-[0_3px_6px_rgba(20,42,70,0.18)] md:-top-12 md:w-[108px]" aria-hidden="true" />
+                    <div class="pointer-events-none absolute bottom-2 left-3 z-10 flex items-end gap-1.5 select-none md:left-4 md:gap-2">
+                      <img src={img.stickerBrace} alt="" class="h-auto w-[30px] -rotate-2 md:w-[38px]" aria-hidden="true" />
+                      <img src={img.stickerSlash} alt="" class="h-auto w-[74px] md:w-[92px]" aria-hidden="true" />
+                    </div>
+                    <img src={img.stickerCursor} alt="" class="pointer-events-none absolute bottom-0 right-2 z-10 h-auto w-[60px] rotate-[8deg] select-none drop-shadow-[0_2px_4px_rgba(20,42,70,0.18)] md:right-4 md:w-[74px]" aria-hidden="true" />
+                  </div>
+                </div>
+              </div>
+              <div class="md:col-span-7">
+                <p class="text-base font-semibold leading-[1.65] text-[#142a46]">{aboutStages[0].highlight}</p>
+                <p class="mt-6 text-base leading-[2] text-[#0f172a]/70">{aboutStages[0].body}</p>
+              </div>
+            </div>
+          </div>
+
+          {/* Stage 2 */}
+          <div id="about-stage-2" class="about-stage absolute inset-0 flex items-center" style="opacity:0;">
+            <div class="mx-auto grid w-full max-w-[860px] items-center gap-14 px-4 md:grid-cols-12 md:gap-20 md:px-6">
+              <div class="md:col-span-5">
+                {/* 两张拍立得叠放 */}
+                <div class="relative mx-auto w-full max-w-[340px] md:mx-0 md:max-w-none" style="height: 420px;">
+                  {/* 后层：素描作品，往右倾 */}
+                  <div class="polaroid absolute bottom-0 left-4 w-[72%] p-2.5 pb-10 shadow-[0_12px_28px_-8px_rgba(20,42,70,0.16)] md:left-6 md:p-3 md:pb-12" style="background:#D6EFFF; transform:rotate(4deg); z-index:1;">
+                    <div class="overflow-hidden rounded-[2px]">
+                      <img src={img.stage2Sketch} alt="素描写生作品" class="block h-auto w-full object-cover" width="900" height="660" loading="lazy" />
+                    </div>
+                  </div>
+                  {/* 前层：户外写生照，往左倾 */}
+                  <div class="polaroid absolute left-0 top-0 w-[72%] p-2.5 pb-10 shadow-[0_18px_40px_-12px_rgba(20,42,70,0.18),0_4px_10px_rgba(20,42,70,0.06)] md:p-3 md:pb-12" style="background:#D6EFFF; transform:rotate(-3deg); z-index:2;">
+                    <div class="overflow-hidden rounded-[2px]">
+                      <img src={img.stage2Drawing} alt="户外写生" class="block h-auto w-full object-cover" width="900" height="660" loading="lazy" />
+                    </div>
+                    {/* 小头像贴纸，对准照片中的爱心 */}
+                    <img src={img.stickerAvatar} alt="" class="pointer-events-none absolute left-[30%] top-[16%] z-20 h-auto w-[20%] select-none drop-shadow-sm" aria-hidden="true" />
+                  </div>
+                  {/* 画笔贴纸，叠在两张照片之间右侧 */}
+                  <img src={img.stickerBrush} alt="" class="pointer-events-none absolute -right-2 bottom-[38%] z-30 h-auto w-[38%] rotate-[-18deg] select-none drop-shadow-[0_3px_8px_rgba(20,42,70,0.18)] md:-right-4 md:w-[42%]" aria-hidden="true" />
+                  {/* 调色盘贴纸，左下角 */}
+                  <img src={img.stickerPalette} alt="" class="pointer-events-none absolute -bottom-6 -left-4 z-30 h-auto w-[28%] rotate-[6deg] select-none drop-shadow-[0_3px_6px_rgba(20,42,70,0.14)] md:-left-6" aria-hidden="true" />
+                </div>
+              </div>
+              <div class="md:col-span-7">
+                <p class="text-base font-semibold leading-[1.65] text-[#142a46]">{aboutStages[1].highlight}</p>
+                <p class="mt-6 text-base leading-[2] text-[#0f172a]/70">{aboutStages[1].body}</p>
+              </div>
+            </div>
+          </div>
+
+          {/* Stage 3 */}
+          <div id="about-stage-3" class="about-stage absolute inset-0 flex items-center" style="opacity:0;">
+            <div class="mx-auto grid w-full max-w-[860px] items-center gap-14 px-4 md:grid-cols-12 md:gap-20 md:px-6">
+              <div class="md:col-span-5">
+                {/* 三张拍立得叠放：参考图构图 */}
+                <div class="relative mx-auto w-full max-w-[360px] md:mx-0 md:max-w-none" style="height: 520px;">
+                  {/* 底层：海报展示照，左上方，最大，往左倾 */}
+                  <div class="polaroid absolute left-0 top-0 w-[70%] p-2.5 pb-9 shadow-[0_14px_32px_-10px_rgba(20,42,70,0.16)] md:p-3 md:pb-11" style="background:#D6EFFF; transform:rotate(-3deg); z-index:1;">
+                    <div class="overflow-hidden rounded-[2px]">
+                      <img src={img.stage3Poster} alt="学术海报展" class="block h-auto w-full object-cover" width="900" height="660" loading="lazy" />
+                    </div>
+                  </div>
+                  {/* 中层：悉尼会议，左侧偏下，往左倾 */}
+                  <div class="polaroid absolute bottom-[8%] left-[6%] w-[55%] p-2 pb-8 shadow-[0_12px_28px_-8px_rgba(20,42,70,0.16)] md:p-2.5 md:pb-9" style="background:#D6EFFF; transform:rotate(-5deg); z-index:2;">
+                    <div class="overflow-hidden rounded-[2px]">
+                      <img src={img.stage3Sydney} alt="悉尼会议" class="block h-auto w-full object-cover" width="900" height="660" loading="lazy" />
+                    </div>
+                  </div>
+                  {/* 前层：小米打卡照，居中右，叠在两张照片之间，往右倾 */}
+                  <div class="polaroid absolute right-[4%] top-[28%] w-[50%] p-2 pb-8 shadow-[0_18px_40px_-12px_rgba(20,42,70,0.2),0_4px_10px_rgba(20,42,70,0.08)] md:p-2.5 md:pb-10" style="background:#D6EFFF; transform:rotate(4deg); z-index:3;">
+                    <div class="overflow-hidden rounded-[2px]">
+                      <img src={img.stage3Xiaomi} alt="小米实习" class="block h-auto w-full object-cover" width="900" height="1200" loading="lazy" />
+                    </div>
+                  </div>
+                  {/* 对话框贴纸，海报照片右上方 */}
+                  <img src={img.stickerBubble} alt="" class="pointer-events-none absolute right-[18%] -top-6 z-30 h-auto w-[26%] rotate-[6deg] select-none drop-shadow-[0_3px_8px_rgba(20,42,70,0.14)]" aria-hidden="true" />
+                  {/* 放大镜贴纸，叠在小米打卡照上（右下角） */}
+                  <img src={img.stickerMagnifier} alt="" class="pointer-events-none absolute right-[8%] top-[46%] z-40 h-auto w-[24%] rotate-[-10deg] select-none drop-shadow-[0_3px_8px_rgba(20,42,70,0.16)]" aria-hidden="true" />
+                  {/* 蓝色夹子，左侧中部，叠在悉尼照与海报照之间 */}
+                  <img src={img.stickerClip2} alt="" class="pointer-events-none absolute -left-3 top-[44%] z-30 h-auto w-[18%] rotate-[-8deg] select-none drop-shadow-[0_2px_6px_rgba(20,42,70,0.14)] md:-left-5" aria-hidden="true" />
+                </div>
+              </div>
+              <div class="md:col-span-7">
+                <p class="text-base font-semibold leading-[1.65] text-[#142a46]">{aboutStages[2].highlight}</p>
+                <p class="mt-6 text-base leading-[2] text-[#0f172a]/70">{aboutStages[2].body}</p>
+                {"body2" in aboutStages[2] && (
+                  <p class="mt-5 text-base leading-[2] text-[#0f172a]/70">{(aboutStages[2] as any).body2}</p>
+                )}
+              </div>
+            </div>
+          </div>
+
+          {/* Stage 4 */}
+          <div id="about-stage-4" class="about-stage absolute inset-0 flex items-center" style="opacity:0;">
+            <div class="mx-auto grid w-full max-w-[860px] items-start gap-14 px-4 md:grid-cols-12 md:gap-20 md:px-6">
+              <div class="md:col-span-5">
+                <div class="relative mx-auto w-full max-w-[340px] md:mx-0 md:max-w-none" style="height: 420px;">
+                  {/* 单张拍立得：天鹅湖照，微微左倾 */}
+                  <div class="polaroid absolute left-0 top-[8%] w-[85%] p-3 pb-14 shadow-[0_18px_40px_-12px_rgba(20,42,70,0.18),0_4px_10px_rgba(20,42,70,0.06)] md:p-4 md:pb-16" style="background:#D6EFFF; transform:rotate(-2deg); z-index:1;">
+                    <div class="overflow-hidden rounded-[2px]">
+                      <img src={img.stage4Swan} alt="天鹅湖" class="block h-auto w-full object-cover" width="900" height="900" loading="lazy" />
+                    </div>
+                  </div>
+                  {/* 钢笔贴纸，照片右上角斜伸出 */}
+                  <img src={img.stickerPen} alt="" class="pointer-events-none absolute right-[2%] top-[4%] z-20 h-auto w-[22%] rotate-[30deg] select-none drop-shadow-[0_3px_8px_rgba(20,42,70,0.16)]" aria-hidden="true" />
+                  {/* 文件夹贴纸，左下角 */}
+                  <img src={img.stickerFolder} alt="" class="pointer-events-none absolute bottom-[10%] -left-4 z-20 h-auto w-[32%] rotate-[-6deg] select-none drop-shadow-[0_3px_8px_rgba(20,42,70,0.14)] md:-left-6" aria-hidden="true" />
+                </div>
+              </div>
+              <div class="md:col-span-7 md:pt-10">
+                <p class="text-base font-semibold leading-[1.65] text-[#142a46]">{aboutStages[3].highlight}</p>
+                <p class="mt-6 text-base leading-[2] text-[#0f172a]/70">{aboutStages[3].body}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- EDUCATION -->
+      <div data-reveal>
+        <div class="mb-8 flex flex-col gap-4">
+          <div class="border-l border-[#9ca3af] pl-[17px]">
+            <p class="text-xs font-medium uppercase tracking-[0.2em] text-[#9ca3af]">Education</p>
+          </div>
+          <div class="h-px w-full bg-neutral-300" />
+        </div>
+        <div class="grid gap-10 md:grid-cols-12 md:gap-8">
+          <div class="md:col-span-4">
+            <p
+              class="font-display text-3xl font-bold leading-snug text-[#5f6d7f] md:text-4xl"
+              style="font-variation-settings: 'SOFT' 0, 'WONK' 1"
+            >
+              My educational background
+            </p>
+          </div>
+          <div class="space-y-6 md:col-span-8">
+            {
+              aboutEducation.map((edu, i) => (
+                <div class:list={["space-y-2", i < aboutEducation.length - 1 && "border-b border-neutral-200 pb-6"]}>
+                  <div class="flex flex-wrap items-baseline justify-between gap-2">
+                    <h3 class="text-lg font-semibold text-[#1a1a1a]">{edu.school}</h3>
+                    <time class="text-xs text-[#9ca3af]">{edu.period}</time>
+                  </div>
+                  <p class="text-base text-[#4b5563]">{edu.degree}</p>
+                  <p class="text-base text-[#9ca3af]">{edu.courses}</p>
+                </div>
+              ))
+            }
+          </div>
+        </div>
+      </div>
+
+      <!-- WORK (internship) -->
+      <div data-reveal>
+        <div class="mb-8 flex flex-col gap-4">
+          <div class="border-l border-[#9ca3af] pl-[17px]">
+            <p class="text-xs font-medium uppercase tracking-[0.2em] text-[#9ca3af]">Work</p>
+          </div>
+          <div class="h-px w-full bg-neutral-300" />
+        </div>
+        <div class="grid gap-10 md:grid-cols-12 md:gap-8">
+          <div class="md:col-span-4">
+            <p
+              class="font-display text-3xl font-bold leading-snug text-[#5f6d7f] md:text-4xl"
+              style="font-variation-settings: 'SOFT' 0, 'WONK' 1"
+            >
+              My Internship Experience
+            </p>
+          </div>
+          <div class="space-y-6 md:col-span-8">
+            {
+              aboutInternships.map((job, i) => (
+                <div class:list={["space-y-2", i < aboutInternships.length - 1 && "border-b border-neutral-200 pb-6"]}>
+                  <div class="flex flex-wrap items-baseline justify-between gap-2">
+                    <h3 class="text-lg font-semibold text-[#1a1a1a]">{job.org}</h3>
+                    <time class="text-xs text-[#9ca3af]">{job.period}</time>
+                  </div>
+                  <p class="text-base text-[#4b5563]">{job.role}</p>
+                  <p class="text-base text-[#9ca3af]">{job.description}</p>
+                </div>
+              ))
+            }
+          </div>
+        </div>
+      </div>
+
+      <!-- AWARDS -->
+      <div data-reveal>
+        <div class="mb-8 flex flex-col gap-4">
+          <div class="border-l border-[#9ca3af] pl-[17px]">
+            <p class="text-xs font-medium uppercase tracking-[0.2em] text-[#9ca3af]">Awards</p>
+          </div>
+          <div class="h-px w-full bg-neutral-300" />
+        </div>
+
+        <div class="flex flex-col gap-1">
+          {aboutAwards.map((row) => {
+            const doubled = [...row.items, ...row.items];
+            return (
+              <div
+                class="marquee-outer"
+                style="mask-image: linear-gradient(to right, transparent 0%, black 6%, black 94%, transparent 100%); -webkit-mask-image: linear-gradient(to right, transparent 0%, black 6%, black 94%, transparent 100%);"
+              >
+                <div
+                  class:list={[
+                    "flex gap-3 w-max",
+                    row.direction === "left" ? "marquee-left" : "marquee-right",
+                  ]}
+                  style={`--marquee-dur: ${row.duration};`}
+                >
+                  {doubled.map((item, i) => (
+                    <div
+                      class="award-card flex shrink-0 cursor-default items-center gap-3 rounded-2xl border border-[rgba(194,199,203,0.25)] bg-[#d6efff] px-5 py-3.5 shadow-[0_1px_2px_rgba(0,0,0,0.04)]"
+                      aria-hidden={i >= row.items.length ? "true" : undefined}
+                    >
+                      <img
+                        src={awardIcons[item.iconKey]}
+                        alt=""
+                        class="size-9 shrink-0 object-contain"
+                        width="36"
+                        height="36"
+                        loading="lazy"
+                      />
+                      <span class="whitespace-nowrap text-sm font-semibold text-[#1a1c1d] md:text-base">
+                        {item.title}
+                      </span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            );
+          })}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  (() => {
+    const wrapper = document.getElementById("about-story-wrapper");
+    if (!wrapper) return;
+
+    const stages = Array.from(wrapper.querySelectorAll<HTMLElement>(".about-stage"));
+    const N = stages.length;
+
+    // ease-in-out cubic
+    const ease = (t: number) => t < 0.5 ? 2 * t * t : -1 + (4 - 2 * t) * t;
+
+    // Each stage boundary sits at raw = k/N.
+    // Cross-fade spans [boundary - half, boundary + half].
+    // fadeHalf = 25 % of one slot on each side.
+    const slotSize = 1 / N;
+    const fadeHalf = slotSize * 0.25;
+
+    const opacityAt = (i: number, raw: number): number => {
+      if (i === 0) {
+        // First stage: starts visible, fades out at boundary 1
+        const b = slotSize;
+        if (raw < b - fadeHalf) return 1;
+        if (raw > b + fadeHalf) return 0;
+        return 1 - ease((raw - (b - fadeHalf)) / (2 * fadeHalf));
+      }
+      if (i === N - 1) {
+        // Last stage: fades in at last boundary, stays visible
+        const b = i * slotSize;
+        if (raw < b - fadeHalf) return 0;
+        if (raw > b + fadeHalf) return 1;
+        return ease((raw - (b - fadeHalf)) / (2 * fadeHalf));
+      }
+      // Middle stage: fades in at boundary i, fades out at boundary i+1
+      const bIn  = i * slotSize;
+      const bOut = (i + 1) * slotSize;
+      if (raw < bIn  - fadeHalf) return 0;
+      if (raw < bIn  + fadeHalf) return ease((raw - (bIn  - fadeHalf)) / (2 * fadeHalf));
+      if (raw < bOut - fadeHalf) return 1;
+      if (raw < bOut + fadeHalf) return 1 - ease((raw - (bOut - fadeHalf)) / (2 * fadeHalf));
+      return 0;
+    };
+
+    const update = () => {
+      const scrollable = wrapper.offsetHeight - window.innerHeight;
+      if (scrollable <= 0) {
+        stages.forEach((s, i) => { s.style.opacity = i === 0 ? "1" : "0"; });
+        return;
+      }
+      const passed = Math.max(0, Math.min(scrollable, -wrapper.getBoundingClientRect().top));
+      const raw = passed / scrollable;
+      stages.forEach((el, i) => {
+        el.style.opacity = String(opacityAt(i, raw));
+      });
+    };
+
+    let ticking = false;
+    window.addEventListener("scroll", () => {
+      if (!ticking) { requestAnimationFrame(() => { update(); ticking = false; }); ticking = true; }
+    }, { passive: true });
+    window.addEventListener("resize", update);
+    update();
+  })();
+</script>

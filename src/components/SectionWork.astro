@@ -1,0 +1,214 @@
+---
+import { work as img, workThumbnails, workBilibiliLinks } from "../data/assets.ts";
+
+/** 连续汉字块与拉丁/数字分开，中文强制数黑体、英文强制 Fraunces（不依赖 font 回退顺序） */
+function workTitleSegments(title: string): { latin: boolean; text: string }[] {
+  const out: { latin: boolean; text: string }[] = [];
+  const re = /[\u4E00-\u9FFF\u3400-\u4DBF]+/gu;
+  let last = 0;
+  let m: RegExpExecArray | null;
+  while ((m = re.exec(title)) !== null) {
+    if (m.index > last) out.push({ latin: true, text: title.slice(last, m.index) });
+    out.push({ latin: false, text: m[0] });
+    last = m.index + m[0].length;
+  }
+  if (last < title.length) out.push({ latin: true, text: title.slice(last) });
+  if (out.length === 0) out.push({ latin: true, text: title });
+  return out;
+}
+
+const cards = [
+  {
+    title: "COLLAB EAR",
+    tag: "C端",
+    desc:
+      "基于多感官具身情境的听障儿童家庭辅助训练的应用程序设计",
+    cover: workThumbnails[0],
+    bilibili: workBilibiliLinks[0],
+    bg: "bg-[#e9e3c9]",
+    col: "md:col-span-8",
+    mediaBox: "relative aspect-[16/9] w-full md:h-[369px] md:aspect-auto",
+    titleRow: "flex flex-wrap items-center justify-between gap-3",
+    titleClass: "",
+    tagClass: "rounded-full bg-[#eceff1] px-3 py-1 text-sm font-medium tracking-wide text-[#4d677f]",
+    descClass: "text-base leading-relaxed text-[#0f172a]/80",
+  },
+  {
+    title: "邂逅之境",
+    tag: "XR体验",
+    desc: "以“香奈儿邂逅香水”为例打造了沉浸式XR体验，探讨XR电商人、货、场之间的关系",
+    cover: workThumbnails[1],
+    bilibili: workBilibiliLinks[1],
+    bg: "bg-[#cdeeff]",
+    col: "md:col-span-4",
+    mediaBox: "relative aspect-[4/5] w-full md:h-[364px] md:aspect-auto",
+    titleRow: "flex flex-wrap items-start justify-between gap-3",
+    titleClass: "min-w-0 flex-1",
+    tagClass:
+      "shrink-0 rounded-full bg-[rgba(68,99,113,0.1)] px-3 py-1 text-sm font-medium tracking-wide text-[#446371]",
+    descClass: "max-w-sm text-base leading-relaxed text-[#0f172a]/80",
+  },
+  {
+    title: "798AR数字展览体验设计",
+    tag: "XR体验",
+    desc:
+      "专注于无障碍体验的多设备统一控制系统。专注于无障碍体验的多设备统一控制系统。",
+    cover: workThumbnails[2],
+    bilibili: workBilibiliLinks[2],
+    bg: "bg-[#ffe3df]",
+    col: "md:col-span-6",
+    mediaBox: "relative aspect-video w-full md:h-[267px] md:aspect-auto",
+    titleRow: "flex flex-wrap items-center justify-between gap-3",
+    titleClass: "",
+    tagClass:
+      "rounded-full bg-[rgba(68,99,113,0.1)] px-3 py-1 text-sm font-medium tracking-wide text-[#446371]",
+    descClass: "text-base leading-relaxed text-[#0f172a]/80",
+  },
+  {
+    title: "If my apple could talk",
+    tag: "XR体验 · AI",
+    desc: "提出了将日常物品作为个性化AI代理概念，并利用混合现实和日常物品的优势增强用户体验，拓展了AI应用的边界与形式。。",
+    cover: workThumbnails[5],
+    bilibili: workBilibiliLinks[5],
+    bg: "bg-[#e8ecf4]",
+    col: "md:col-span-6",
+    mediaBox: "relative aspect-video w-full md:h-[267px] md:aspect-auto",
+    titleRow: "flex flex-wrap items-center justify-between gap-3",
+    titleClass: "",
+    tagClass:
+      "rounded-full bg-[rgba(68,99,113,0.1)] px-3 py-1 text-sm font-medium tracking-wide text-[#446371]",
+    descClass: "text-base leading-relaxed text-[#0f172a]/80",
+  },
+  {
+    title: "东巴构字空间",
+    tag: "XR体验",
+    desc: "非物质文化遗产中象形文字的 VR 科普性互动体验。",
+    cover: workThumbnails[4],
+    bilibili: workBilibiliLinks[4],
+    bg: "bg-[#dde8f0]",
+    col: "md:col-span-6",
+    mediaBox: "relative aspect-video w-full md:h-[267px] md:aspect-auto",
+    titleRow: "flex flex-wrap items-center justify-between gap-3",
+    titleClass: "",
+    tagClass:
+      "rounded-full bg-[rgba(68,99,113,0.1)] px-3 py-1 text-sm font-medium tracking-wide text-[#446371]",
+    descClass: "text-base leading-relaxed text-[#0f172a]/80",
+  },
+  {
+    title: "Veil",
+    tag: "VR影像",
+    desc:
+      "一款极具沉浸感的可交互虚拟现实影像作品，以“唐代女子出行”为主题，带领观众穿越千年，亲身体验唐代女性的风采与文化魅力。",
+    cover: workThumbnails[3],
+    bilibili: workBilibiliLinks[3],
+    bg: "bg-[#e9e3c9]",
+    col: "md:col-span-6",
+    mediaBox: "relative aspect-video w-full md:h-[267px] md:aspect-auto",
+    titleRow: "flex flex-wrap items-center justify-between gap-3",
+    titleClass: "",
+    tagClass:
+      "rounded-full bg-[rgba(68,99,113,0.1)] px-3 py-1 text-sm font-medium tracking-wide text-[#446371]",
+    descClass: "text-base leading-relaxed text-[#0f172a]/80",
+  },
+] as const;
+---
+
+<section
+  id="work"
+  class="snap-section relative min-h-[100dvh] bg-[#d6efff] pb-24 pt-8 md:pb-32 md:pt-16"
+  aria-label="作品展示"
+>
+  <div class="relative mx-auto w-full max-w-[1280px] px-4 md:px-6">
+    <header class="mb-10 grid grid-cols-1 gap-6 md:mb-12 md:grid-cols-12 md:items-start md:gap-x-6 md:gap-y-2">
+      <div
+        class="flex flex-row items-center justify-center gap-3 sm:gap-4 md:col-span-7 md:justify-start md:gap-5 md:pl-[clamp(0px,5vw,96px)] lg:col-span-6"
+      >
+        <img
+          src={img.folder}
+          alt=""
+          data-reveal
+          class="relative shrink-0 block h-36 w-[128px] rotate-[-8deg] object-contain sm:h-40 sm:w-[140px] md:h-[10.5rem] md:w-[158px]"
+          width="205"
+          height="177"
+        />
+        <h2
+          data-reveal
+          data-reveal-delay="1"
+          class="min-w-0 text-left text-[clamp(1.45rem,3.6vw,3.25rem)] font-semibold leading-[1.12] tracking-tight text-[#142a46]"
+        >
+          <span class="block">选择一个感兴趣</span>
+          <span class="block">的项目叭</span>
+        </h2>
+      </div>
+      <p
+        data-reveal
+        data-reveal-delay="2"
+        class="max-w-xl justify-self-end text-right text-sm leading-relaxed tracking-wide text-[#0f172a]/60 md:col-span-5 md:max-w-[28rem] md:self-end md:pb-0.5 md:text-right lg:col-span-6"
+      >
+        除作品集已呈现的实习项目外，本板块补充个人学生项目及动态视频演示，进一步体现我在设计中的大胆探索与创意思维。
+      </p>
+    </header>
+
+    <div class="grid grid-cols-1 gap-6 md:grid-cols-12 md:gap-x-6 md:gap-y-10">
+      {
+        cards.map((p, i) => (
+          <a
+            href={p.bilibili}
+            target="_blank"
+            rel="noopener noreferrer"
+            role="article"
+            data-reveal
+            data-reveal-delay={String(Math.min(i, 4))}
+            class={`group flex flex-col gap-6 rounded-xl border border-[rgba(194,199,203,0.15)] bg-white p-5 text-inherit no-underline shadow-[0_1px_1px_rgba(0,0,0,0.05)] transition-shadow hover:shadow-md focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#142a46]/40 ${p.col}`}
+            aria-label={`${p.title} — 在哔哩哔哩打开视频`}
+          >
+            <div class={`${p.bg} overflow-hidden rounded-lg`}>
+              <div class={p.mediaBox}>
+                <img
+                  src={p.cover}
+                  alt=""
+                  class="absolute inset-0 h-full w-full object-cover transition duration-200 group-hover:scale-[1.02] group-hover:opacity-95"
+                  loading="lazy"
+                  decoding="async"
+                />
+                <span
+                  class="pointer-events-none absolute left-1/2 top-1/2 flex size-14 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-black/45 text-white shadow-md backdrop-blur-[2px] transition group-hover:scale-110 group-hover:bg-black/55 md:size-16"
+                  aria-hidden="true"
+                >
+                  <svg class="ml-0.5 size-7 md:size-8" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                    <path d="M8 5v14l11-7L8 5z" />
+                  </svg>
+                </span>
+              </div>
+            </div>
+            <div class="flex flex-col gap-4">
+              <div class={p.titleRow}>
+                <h3
+                  class={`text-[26px] font-black leading-tight text-[#142a46] sm:text-[28px] md:text-[36px] md:leading-[44px] ${p.titleClass}`}
+                >
+                  {workTitleSegments(p.title).map((seg) =>
+                    seg.latin ? (
+                      <span class="font-work-card-title-latin">{seg.text}</span>
+                    ) : (
+                      <span class="font-work-card-title-zh">{seg.text}</span>
+                    )
+                  )}
+                </h3>
+                <span class={p.tagClass}>{p.tag}</span>
+              </div>
+              <p class={p.descClass}>{p.desc}</p>
+            </div>
+          </a>
+        ))
+      }
+    </div>
+
+    <div class="pointer-events-none absolute bottom-8 right-4 hidden md:block">
+      <div
+        class="flex size-12 items-center justify-center rounded-full border border-white/30 bg-white/20 p-0.5 backdrop-blur-[2px]"
+      >
+        <img src={img.floatIcon} alt="" class="size-6" width="24" height="24" />
+      </div>
+    </div>
+  </div>
+</section>
