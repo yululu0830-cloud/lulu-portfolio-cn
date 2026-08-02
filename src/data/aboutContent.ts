@@ -57,7 +57,7 @@ export const aboutEducation = [
   },
   {
     school: "北京航空航天大学",
-    period: "2020 — 2024",
+    period: "2021 — 至今",
     degree: "用户体验与交互设计",
     courses: "人机交互与用户体验、设计研究方法、跨学科数字创新设计、设计风格与表现",
   },
@@ -65,11 +65,11 @@ export const aboutEducation = [
 
 export const aboutInternships = [
   {
-    org: "学而思好未来 · 培优产品部",
-    period: "2025.12 — 2026.3",
-    role: "UX/UI 设计实习生",
+    org: "百度 · 百度网盘界面设计组",
+    period: "2026.05 — 2026.08",
+    role: "UI 设计师",
     description:
-      "参与一款教学管理后台产品的体验优化与交互方案设计，持续提升系统可用性与整体用户体验。",
+      "参与百度网盘产品的界面设计与视觉规范建设，围绕核心功能进行体验梳理与细节打磨，推动设计方案落地。",
   },
   {
     org: "小米汽车 · 汽车部",
@@ -77,6 +77,13 @@ export const aboutInternships = [
     role: "体验设计师",
     description:
       "负责自动驾驶相关界面的 AI 智驾相关的竞品研究与需求优化，辅助输出 HMI 设计规范，推动设计体验实现。参与小米汽车 App C 端的体验设计优化和改版。",
+  },
+  {
+    org: "知乎 · 盐言业务部",
+    period: "2026.03 — 2024.05",
+    role: "产品体验设计师",
+    description:
+      "参与盐言故事业务的产品体验设计，围绕内容消费与增长链路开展方案探索，输出可落地的交互与视觉方案。",
   },
 ] as const;
 

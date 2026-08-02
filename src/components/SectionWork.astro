@@ -1,5 +1,5 @@
 ---
-import { work as img, workThumbnails, workBilibiliLinks } from "../data/assets.ts";
+import { work as img, workThumbnails, workBilibiliLinks, workPdfs } from "../data/assets.ts";
 
 /** 连续汉字块与拉丁/数字分开，中文强制数黑体、英文强制 Fraunces（不依赖 font 回退顺序） */
 function workTitleSegments(title: string): { latin: boolean; text: string }[] {
@@ -26,12 +26,7 @@ const cards = [
     cover: workThumbnails[0],
     bilibili: workBilibiliLinks[0],
     bg: "bg-[#e9e3c9]",
-    col: "md:col-span-8",
-    mediaBox: "relative aspect-[16/9] w-full md:h-[369px] md:aspect-auto",
-    titleRow: "flex flex-wrap items-center justify-between gap-3",
-    titleClass: "",
-    tagClass: "rounded-full bg-[#eceff1] px-3 py-1 text-sm font-medium tracking-wide text-[#4d677f]",
-    descClass: "text-base leading-relaxed text-[#0f172a]/80",
+    tagClass: "rounded-[2px] bg-[#eceff1] px-2 py-0.5 text-xs font-medium tracking-wide text-[#4d677f]",
   },
   {
     title: "邂逅之境",
@@ -40,13 +35,8 @@ const cards = [
     cover: workThumbnails[1],
     bilibili: workBilibiliLinks[1],
     bg: "bg-[#cdeeff]",
-    col: "md:col-span-4",
-    mediaBox: "relative aspect-[4/5] w-full md:h-[364px] md:aspect-auto",
-    titleRow: "flex flex-wrap items-start justify-between gap-3",
-    titleClass: "min-w-0 flex-1",
     tagClass:
-      "shrink-0 rounded-full bg-[rgba(68,99,113,0.1)] px-3 py-1 text-sm font-medium tracking-wide text-[#446371]",
-    descClass: "max-w-sm text-base leading-relaxed text-[#0f172a]/80",
+      "rounded-[2px] bg-[rgba(68,99,113,0.1)] px-2 py-0.5 text-xs font-medium tracking-wide text-[#446371]",
   },
   {
     title: "798AR数字展览体验设计",
@@ -56,13 +46,8 @@ const cards = [
     cover: workThumbnails[2],
     bilibili: workBilibiliLinks[2],
     bg: "bg-[#ffe3df]",
-    col: "md:col-span-6",
-    mediaBox: "relative aspect-video w-full md:h-[267px] md:aspect-auto",
-    titleRow: "flex flex-wrap items-center justify-between gap-3",
-    titleClass: "",
     tagClass:
-      "rounded-full bg-[rgba(68,99,113,0.1)] px-3 py-1 text-sm font-medium tracking-wide text-[#446371]",
-    descClass: "text-base leading-relaxed text-[#0f172a]/80",
+      "rounded-[2px] bg-[rgba(68,99,113,0.1)] px-2 py-0.5 text-xs font-medium tracking-wide text-[#446371]",
   },
   {
     title: "If my apple could talk",
@@ -71,13 +56,8 @@ const cards = [
     cover: workThumbnails[5],
     bilibili: workBilibiliLinks[5],
     bg: "bg-[#e8ecf4]",
-    col: "md:col-span-6",
-    mediaBox: "relative aspect-video w-full md:h-[267px] md:aspect-auto",
-    titleRow: "flex flex-wrap items-center justify-between gap-3",
-    titleClass: "",
     tagClass:
-      "rounded-full bg-[rgba(68,99,113,0.1)] px-3 py-1 text-sm font-medium tracking-wide text-[#446371]",
-    descClass: "text-base leading-relaxed text-[#0f172a]/80",
+      "rounded-[2px] bg-[rgba(68,99,113,0.1)] px-2 py-0.5 text-xs font-medium tracking-wide text-[#446371]",
   },
   {
     title: "东巴构字空间",
@@ -86,13 +66,8 @@ const cards = [
     cover: workThumbnails[4],
     bilibili: workBilibiliLinks[4],
     bg: "bg-[#dde8f0]",
-    col: "md:col-span-6",
-    mediaBox: "relative aspect-video w-full md:h-[267px] md:aspect-auto",
-    titleRow: "flex flex-wrap items-center justify-between gap-3",
-    titleClass: "",
     tagClass:
-      "rounded-full bg-[rgba(68,99,113,0.1)] px-3 py-1 text-sm font-medium tracking-wide text-[#446371]",
-    descClass: "text-base leading-relaxed text-[#0f172a]/80",
+      "rounded-[2px] bg-[rgba(68,99,113,0.1)] px-2 py-0.5 text-xs font-medium tracking-wide text-[#446371]",
   },
   {
     title: "Veil",
@@ -102,13 +77,8 @@ const cards = [
     cover: workThumbnails[3],
     bilibili: workBilibiliLinks[3],
     bg: "bg-[#e9e3c9]",
-    col: "md:col-span-6",
-    mediaBox: "relative aspect-video w-full md:h-[267px] md:aspect-auto",
-    titleRow: "flex flex-wrap items-center justify-between gap-3",
-    titleClass: "",
     tagClass:
-      "rounded-full bg-[rgba(68,99,113,0.1)] px-3 py-1 text-sm font-medium tracking-wide text-[#446371]",
-    descClass: "text-base leading-relaxed text-[#0f172a]/80",
+      "rounded-[2px] bg-[rgba(68,99,113,0.1)] px-2 py-0.5 text-xs font-medium tracking-wide text-[#446371]",
   },
 ] as const;
 ---
@@ -136,7 +106,7 @@ const cards = [
           data-reveal-delay="1"
           class="min-w-0 text-left text-[clamp(1.45rem,3.6vw,3.25rem)] font-semibold leading-[1.12] tracking-tight text-[#142a46]"
         >
-          <span class="block">选择一个感兴趣</span>
+          <span class="block whitespace-nowrap">选择一个感兴趣</span>
           <span class="block">的项目叭</span>
         </h2>
       </div>
@@ -145,11 +115,68 @@ const cards = [
         data-reveal-delay="2"
         class="max-w-xl justify-self-end text-right text-sm leading-relaxed tracking-wide text-[#0f172a]/60 md:col-span-5 md:max-w-[28rem] md:self-end md:pb-0.5 md:text-right lg:col-span-6"
       >
-        除作品集已呈现的实习项目外，本板块补充个人学生项目及动态视频演示，进一步体现我在设计中的大胆探索与创意思维。
+        以下为实习及项目实践中沉淀的商业作品集文档，涵盖 AI 提效、车载 HMI、增长设计与内容创作等方向，点击卡片可查看完整 PDF 方案
       </p>
     </header>
 
-    <div class="grid grid-cols-1 gap-6 md:grid-cols-12 md:gap-x-6 md:gap-y-10">
+    <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 md:gap-x-4 md:gap-y-6">
+      {
+        workPdfs.map((p, i) => (
+          <a
+            href={p.pdf}
+            target="_blank"
+            rel="noopener noreferrer"
+            role="article"
+            data-reveal
+            data-reveal-delay={String(Math.min(i, 4))}
+            class={`group flex flex-col gap-4 overflow-hidden rounded-xl border border-[rgba(194,199,203,0.15)] bg-white text-inherit no-underline shadow-[0_1px_1px_rgba(0,0,0,0.05)] transition-shadow hover:shadow-md focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#142a46]/40`}
+            aria-label={`${p.title} — 打开 PDF`}
+          >
+            <div class={`${p.bg}`}>
+              <div class="relative aspect-video w-full">
+                <img
+                  src={p.cover}
+                  alt=""
+                  class="absolute inset-0 h-full w-full object-cover transition duration-200 group-hover:scale-[1.02] group-hover:opacity-95"
+                  loading="lazy"
+                  decoding="async"
+                />
+              </div>
+            </div>
+            <div class="flex flex-col gap-4 px-5 pb-5">
+              <div class="flex flex-col items-start gap-2">
+                <h3
+                  class={`w-full truncate text-[16px] font-black leading-tight text-[#142a46] sm:text-[17px] md:text-[19px] md:leading-[26px]`}
+                >
+                  {workTitleSegments(p.title).map((seg) =>
+                    seg.latin ? (
+                      <span class="font-work-card-title-latin">{seg.text}</span>
+                    ) : (
+                      <span class="font-work-card-title-zh">{seg.text}</span>
+                    )
+                  )}
+                </h3>
+                <span class="rounded-[2px] bg-[rgba(68,99,113,0.1)] px-2 py-0.5 text-xs font-medium tracking-wide text-[#446371]">
+                  {p.tag}
+                </span>
+              </div>
+              <p class="line-clamp-2 text-sm leading-relaxed text-[#0f172a]/80">{p.desc.replace(/[。.]+$/, "")}</p>
+            </div>
+          </a>
+        ))
+      }
+    </div>
+
+    <div class="mt-10 mb-6 flex justify-end md:mt-14 md:mb-8">
+      <p
+        data-reveal
+        class="max-w-xl text-right text-sm leading-relaxed tracking-wide text-[#0f172a]/60 md:max-w-[28rem]"
+      >
+        除作品集已呈现的实习项目外，本板块补充个人学生项目及动态视频演示，进一步体现我在设计中的大胆探索与创意思维
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 md:gap-x-4 md:gap-y-6">
       {
         cards.map((p, i) => (
           <a
@@ -159,11 +186,11 @@ const cards = [
             role="article"
             data-reveal
             data-reveal-delay={String(Math.min(i, 4))}
-            class={`group flex flex-col gap-6 rounded-xl border border-[rgba(194,199,203,0.15)] bg-white p-5 text-inherit no-underline shadow-[0_1px_1px_rgba(0,0,0,0.05)] transition-shadow hover:shadow-md focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#142a46]/40 ${p.col}`}
+            class={`group flex flex-col gap-4 overflow-hidden rounded-xl border border-[rgba(194,199,203,0.15)] bg-white text-inherit no-underline shadow-[0_1px_1px_rgba(0,0,0,0.05)] transition-shadow hover:shadow-md focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#142a46]/40`}
             aria-label={`${p.title} — 在哔哩哔哩打开视频`}
           >
-            <div class={`${p.bg} overflow-hidden rounded-lg`}>
-              <div class={p.mediaBox}>
+            <div class={`${p.bg}`}>
+              <div class="relative aspect-video w-full">
                 <img
                   src={p.cover}
                   alt=""
@@ -181,10 +208,10 @@ const cards = [
                 </span>
               </div>
             </div>
-            <div class="flex flex-col gap-4">
-              <div class={p.titleRow}>
+            <div class="flex flex-col gap-4 px-5 pb-5">
+              <div class="flex flex-col items-start gap-2">
                 <h3
-                  class={`text-[26px] font-black leading-tight text-[#142a46] sm:text-[28px] md:text-[36px] md:leading-[44px] ${p.titleClass}`}
+                  class={`w-full truncate text-[16px] font-black leading-tight text-[#142a46] sm:text-[17px] md:text-[19px] md:leading-[26px]`}
                 >
                   {workTitleSegments(p.title).map((seg) =>
                     seg.latin ? (
@@ -196,7 +223,7 @@ const cards = [
                 </h3>
                 <span class={p.tagClass}>{p.tag}</span>
               </div>
-              <p class={p.descClass}>{p.desc}</p>
+              <p class="line-clamp-2 text-sm leading-relaxed text-[#0f172a]/80">{p.desc.replace(/[。.]+$/, "")}</p>
             </div>
           </a>
         ))

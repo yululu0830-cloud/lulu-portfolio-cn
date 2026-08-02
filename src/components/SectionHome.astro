@@ -7,7 +7,7 @@ const sublines = ["A Designer", "A Drawing Lover", "A Coding Learner"];
 
 <section
   id="home"
-  class="snap-section relative flex min-h-[100dvh] items-start justify-center overflow-x-hidden overflow-y-visible bg-[#d6efff] px-3 pb-12 pt-4 sm:px-5 sm:pt-6 2xl:min-h-[132dvh] 2xl:pb-24 2xl:pt-8"
+  class="snap-section relative flex min-h-[100dvh] items-start justify-center overflow-x-hidden overflow-y-visible bg-[#d6efff] px-3 pb-12 pt-10 sm:px-5 sm:pt-14 2xl:min-h-[132dvh] 2xl:pb-24 2xl:pt-20"
   aria-label="首页 · 家居空间"
   data-home-root
 >
@@ -23,7 +23,7 @@ const sublines = ["A Designer", "A Drawing Lover", "A Coding Learner"];
   >
     <!-- Decorative snow / bubble：雪花为六角星（三轴 60°、中心相交、等长）；圆 29×29 -->
     <svg
-      class="pointer-events-none absolute left-[11%] top-[11%] w-5 opacity-90 sm:left-[13%] sm:top-[12%] sm:w-6"
+      class="pointer-events-none absolute left-[2%] top-[32%] w-5 opacity-90 sm:left-[3%] sm:w-6"
       width="32"
       height="32"
       viewBox="0 0 52 52"
@@ -63,7 +63,7 @@ const sublines = ["A Designer", "A Drawing Lover", "A Coding Learner"];
       </g>
     </svg>
     <svg
-      class="pointer-events-none absolute right-[17%] top-[9%] hidden w-7 md:block"
+      class="pointer-events-none absolute right-[2%] top-[45%] hidden w-7 md:block"
       width="36"
       height="42"
       viewBox="0 0 52 52"
@@ -83,7 +83,7 @@ const sublines = ["A Designer", "A Drawing Lover", "A Coding Learner"];
       </g>
     </svg>
     <svg
-      class="pointer-events-none absolute bottom-[17%] left-[20%] w-6 sm:bottom-[19%] sm:left-[22%]"
+      class="pointer-events-none absolute bottom-[46%] left-[3%] w-6 sm:bottom-[48%] sm:left-[4%]"
       width="36"
       height="42"
       viewBox="0 0 52 52"
@@ -121,7 +121,7 @@ const sublines = ["A Designer", "A Drawing Lover", "A Coding Learner"];
     <div
       class="absolute left-[8%] top-[5%] z-10 w-[clamp(7.5rem,14vw,15rem)] sm:left-[9%] sm:top-[6%] md:left-[10%] md:top-[6%] lg:w-[clamp(8rem,13vw,17.5rem)]"
     >
-      <img src={img.software} alt="" class="w-full drop-shadow-md" width="249" height="141" />
+      <img src={img.software} alt="" class="w-full" width="249" height="141" />
     </div>
 
     <!-- Resume — 右上，略缩小 -->
@@ -134,7 +134,7 @@ const sublines = ["A Designer", "A Drawing Lover", "A Coding Learner"];
         aria-label="关于我 · 简历与经历"
         data-cursor-tip="about"
       >
-        <img src={img.resume} alt="" class="w-full drop-shadow-md" width="147" height="187" />
+        <img src={img.resume} alt="" class="w-full" width="147" height="187" />
       </a>
     </div>
 
@@ -143,7 +143,7 @@ const sublines = ["A Designer", "A Drawing Lover", "A Coding Learner"];
       class="absolute left-1/2 top-[13%] z-20 w-[92%] max-w-[min(92%,52rem)] -translate-x-1/2 text-center sm:top-[15%] md:top-[17%]"
     >
       <h1
-        class="font-display text-[clamp(2.15rem,calc(3.4vw+1.15rem),6.75rem)] font-black leading-[1.1] tracking-tight text-white drop-shadow-[0_4px_24px_rgba(171,210,235,0.95)]"
+        class="font-display text-[clamp(2.15rem,calc(3.4vw+1.15rem),6.75rem)] font-black leading-[1.1] tracking-tight text-white"
         style="font-variation-settings: 'SOFT' 0, 'WONK' 1"
       >
         <span class="block">I’m lulu</span>
@@ -170,7 +170,7 @@ const sublines = ["A Designer", "A Drawing Lover", "A Coding Learner"];
       aria-label="进入作品 · Work"
       data-cursor-tip="work"
     >
-      <img src={img.work} alt="" class="w-full select-none drop-shadow-lg" width="441" height="327" draggable="false" />
+      <img src={img.work} alt="" class="w-full select-none" width="441" height="327" draggable="false" />
     </a>
 
     <!-- 绿植 — 介于桌与圆桌之间，略向中线 -->
@@ -185,9 +185,9 @@ const sublines = ["A Designer", "A Drawing Lover", "A Coding Learner"];
       class="absolute bottom-[9%] right-[6%] z-10 flex items-end justify-end gap-[clamp(0.25rem,1vw,0.85rem)] sm:bottom-[10%] sm:right-[7%] md:bottom-[11%] md:right-[8%] lg:gap-4"
     >
       <div
-        class="relative w-[clamp(11.5rem,22vw,22.5rem)] shrink-0 sm:w-[clamp(12.5rem,21vw,24rem)] lg:w-[clamp(13rem,20vw,26rem)]"
+        class="relative w-[clamp(10rem,19vw,20rem)] shrink-0 sm:w-[clamp(11rem,18vw,21rem)] lg:w-[clamp(12rem,17vw,23rem)]"
       >
-        <img src={img.table} alt="" class="w-full drop-shadow-xl" width="400" height="172" />
+        <img src={img.table} alt="" class="w-full" width="400" height="172" />
         <!-- 个人照片：与电话同用 left 百分比，间距随圆桌等比缩放；无 hover 白边 -->
         <a
           href="#about"
@@ -210,7 +210,7 @@ const sublines = ["A Designer", "A Drawing Lover", "A Coding Learner"];
       <div
         class="mb-[2px] w-[clamp(4rem,8vw,7.5rem)] shrink-0 lg:w-[clamp(4.5rem,7.5vw,8rem)]"
       >
-        <img src={img.cabinet} alt="" class="w-full opacity-95 drop-shadow-md" width="137" height="343" />
+        <img src={img.cabinet} alt="" class="w-full opacity-95" width="137" height="343" />
       </div>
     </div>
   </div>

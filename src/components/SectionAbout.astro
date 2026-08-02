@@ -23,9 +23,9 @@ const STAGES = aboutStages.length; // 当前 2，之后增加时自动生效
     <header class="relative mb-16 md:mb-20 md:pl-[clamp(0px,12vw,240px)]">
       <div data-reveal class="relative flex flex-col items-center gap-6 md:flex-row md:items-start md:gap-10">
         <div
-          class="flex size-[140px] shrink-0 items-start justify-center rounded-full bg-[#d6efff] p-2 md:absolute md:-left-4 md:top-12 md:size-[189px]"
+          class="flex size-[140px] shrink-0 items-center justify-center rounded-full bg-[#d6efff] p-2 md:absolute md:-left-4 md:top-12 md:size-[189px]"
         >
-          <div class="relative mt-1 size-[130px] overflow-hidden rounded-full md:size-[173px]">
+          <div class="relative size-[130px] overflow-hidden rounded-full md:size-[173px]">
             <img
               src={img.heroAvatar}
               alt=""
@@ -70,16 +70,16 @@ const STAGES = aboutStages.length; // 当前 2，之后增加时自动生效
             <div class="mx-auto grid w-full max-w-[860px] items-center gap-14 px-4 md:grid-cols-12 md:gap-20 md:px-6">
               <div class="md:col-span-5">
                 <div class="relative mx-auto w-full max-w-[340px] md:mx-0 md:max-w-none">
-                  <div class="polaroid relative p-3 pb-16 shadow-[0_18px_40px_-12px_rgba(20,42,70,0.18),0_4px_10px_rgba(20,42,70,0.06)] md:p-4 md:pb-20" style="background:#D6EFFF; transform:rotate(-2.4deg);">
+                  <div class="polaroid relative p-3 pb-16 md:p-4 md:pb-20" style="background:#D6EFFF; transform:rotate(-2.4deg);">
                     <div class="overflow-hidden rounded-[2px]">
                       <img src={img.stage1Photo} alt="卢卢肖像 · 海边" class="block h-auto w-full object-cover" width="900" height="900" loading="lazy" />
                     </div>
-                    <img src={img.stickerClip} alt="" class="pointer-events-none absolute -top-10 left-[16%] z-10 h-auto w-[88px] -rotate-3 select-none drop-shadow-[0_3px_6px_rgba(20,42,70,0.18)] md:-top-12 md:w-[108px]" aria-hidden="true" />
+                    <img src={img.stickerClip} alt="" class="pointer-events-none absolute -top-[55px] left-[16%] z-10 h-auto w-[88px] -rotate-3 select-none md:-top-[63px] md:w-[108px]" aria-hidden="true" />
                     <div class="pointer-events-none absolute bottom-2 left-3 z-10 flex items-end gap-1.5 select-none md:left-4 md:gap-2">
                       <img src={img.stickerBrace} alt="" class="h-auto w-[30px] -rotate-2 md:w-[38px]" aria-hidden="true" />
                       <img src={img.stickerSlash} alt="" class="h-auto w-[74px] md:w-[92px]" aria-hidden="true" />
                     </div>
-                    <img src={img.stickerCursor} alt="" class="pointer-events-none absolute bottom-0 right-2 z-10 h-auto w-[60px] rotate-[8deg] select-none drop-shadow-[0_2px_4px_rgba(20,42,70,0.18)] md:right-4 md:w-[74px]" aria-hidden="true" />
+                    <img src={img.stickerCursor} alt="" class="pointer-events-none absolute bottom-0 right-2 z-10 h-auto w-[60px] rotate-[8deg] select-none md:right-4 md:w-[74px]" aria-hidden="true" />
                   </div>
                 </div>
               </div>
@@ -97,23 +97,23 @@ const STAGES = aboutStages.length; // 当前 2，之后增加时自动生效
                 {/* 两张拍立得叠放 */}
                 <div class="relative mx-auto w-full max-w-[340px] md:mx-0 md:max-w-none" style="height: 420px;">
                   {/* 后层：素描作品，往右倾 */}
-                  <div class="polaroid absolute bottom-0 left-4 w-[72%] p-2.5 pb-10 shadow-[0_12px_28px_-8px_rgba(20,42,70,0.16)] md:left-6 md:p-3 md:pb-12" style="background:#D6EFFF; transform:rotate(4deg); z-index:1;">
+                  <div class="polaroid absolute bottom-0 left-4 w-[72%] p-2.5 pb-10 md:left-6 md:p-3 md:pb-12" style="background:#D6EFFF; transform:rotate(4deg); z-index:1;">
                     <div class="overflow-hidden rounded-[2px]">
                       <img src={img.stage2Sketch} alt="素描写生作品" class="block h-auto w-full object-cover" width="900" height="660" loading="lazy" />
                     </div>
                   </div>
                   {/* 前层：户外写生照，往左倾 */}
-                  <div class="polaroid absolute left-0 top-0 w-[72%] p-2.5 pb-10 shadow-[0_18px_40px_-12px_rgba(20,42,70,0.18),0_4px_10px_rgba(20,42,70,0.06)] md:p-3 md:pb-12" style="background:#D6EFFF; transform:rotate(-3deg); z-index:2;">
+                  <div class="polaroid absolute left-0 top-0 w-[72%] p-2.5 pb-10 md:p-3 md:pb-12" style="background:#D6EFFF; transform:rotate(-3deg); z-index:2;">
                     <div class="overflow-hidden rounded-[2px]">
                       <img src={img.stage2Drawing} alt="户外写生" class="block h-auto w-full object-cover" width="900" height="660" loading="lazy" />
                     </div>
                     {/* 小头像贴纸，对准照片中的爱心 */}
-                    <img src={img.stickerAvatar} alt="" class="pointer-events-none absolute left-[30%] top-[16%] z-20 h-auto w-[20%] select-none drop-shadow-sm" aria-hidden="true" />
+                    <img src={img.stickerAvatar} alt="" class="pointer-events-none absolute left-[30%] top-[16%] z-20 h-auto w-[20%] select-none" aria-hidden="true" />
                   </div>
                   {/* 画笔贴纸，叠在两张照片之间右侧 */}
-                  <img src={img.stickerBrush} alt="" class="pointer-events-none absolute -right-2 bottom-[38%] z-30 h-auto w-[38%] rotate-[-18deg] select-none drop-shadow-[0_3px_8px_rgba(20,42,70,0.18)] md:-right-4 md:w-[42%]" aria-hidden="true" />
+                  <img src={img.stickerBrush} alt="" class="pointer-events-none absolute -right-2 bottom-[38%] z-30 h-auto w-[38%] rotate-[-18deg] select-none md:-right-4 md:w-[42%]" aria-hidden="true" />
                   {/* 调色盘贴纸，左下角 */}
-                  <img src={img.stickerPalette} alt="" class="pointer-events-none absolute -bottom-6 -left-4 z-30 h-auto w-[28%] rotate-[6deg] select-none drop-shadow-[0_3px_6px_rgba(20,42,70,0.14)] md:-left-6" aria-hidden="true" />
+                  <img src={img.stickerPalette} alt="" class="pointer-events-none absolute -bottom-6 -left-4 z-30 h-auto w-[28%] rotate-[6deg] select-none md:-left-6" aria-hidden="true" />
                 </div>
               </div>
               <div class="md:col-span-7">
@@ -130,29 +130,29 @@ const STAGES = aboutStages.length; // 当前 2，之后增加时自动生效
                 {/* 三张拍立得叠放：参考图构图 */}
                 <div class="relative mx-auto w-full max-w-[360px] md:mx-0 md:max-w-none" style="height: 520px;">
                   {/* 底层：海报展示照，左上方，最大，往左倾 */}
-                  <div class="polaroid absolute left-0 top-0 w-[70%] p-2.5 pb-9 shadow-[0_14px_32px_-10px_rgba(20,42,70,0.16)] md:p-3 md:pb-11" style="background:#D6EFFF; transform:rotate(-3deg); z-index:1;">
+                  <div class="polaroid absolute left-0 top-0 w-[70%] p-2.5 pb-9 md:p-3 md:pb-11" style="background:#D6EFFF; transform:rotate(-3deg); z-index:1;">
                     <div class="overflow-hidden rounded-[2px]">
                       <img src={img.stage3Poster} alt="学术海报展" class="block h-auto w-full object-cover" width="900" height="660" loading="lazy" />
                     </div>
                   </div>
                   {/* 中层：悉尼会议，左侧偏下，往左倾 */}
-                  <div class="polaroid absolute bottom-[8%] left-[6%] w-[55%] p-2 pb-8 shadow-[0_12px_28px_-8px_rgba(20,42,70,0.16)] md:p-2.5 md:pb-9" style="background:#D6EFFF; transform:rotate(-5deg); z-index:2;">
+                  <div class="polaroid absolute bottom-[8%] left-[6%] w-[55%] p-2 pb-8 md:p-2.5 md:pb-9" style="background:#D6EFFF; transform:rotate(-5deg); z-index:2;">
                     <div class="overflow-hidden rounded-[2px]">
                       <img src={img.stage3Sydney} alt="悉尼会议" class="block h-auto w-full object-cover" width="900" height="660" loading="lazy" />
                     </div>
                   </div>
                   {/* 前层：小米打卡照，居中右，叠在两张照片之间，往右倾 */}
-                  <div class="polaroid absolute right-[4%] top-[28%] w-[50%] p-2 pb-8 shadow-[0_18px_40px_-12px_rgba(20,42,70,0.2),0_4px_10px_rgba(20,42,70,0.08)] md:p-2.5 md:pb-10" style="background:#D6EFFF; transform:rotate(4deg); z-index:3;">
+                  <div class="polaroid absolute right-[4%] top-[28%] w-[50%] p-2 pb-8 md:p-2.5 md:pb-10" style="background:#D6EFFF; transform:rotate(4deg); z-index:3;">
                     <div class="overflow-hidden rounded-[2px]">
                       <img src={img.stage3Xiaomi} alt="小米实习" class="block h-auto w-full object-cover" width="900" height="1200" loading="lazy" />
                     </div>
                   </div>
                   {/* 对话框贴纸，海报照片右上方 */}
-                  <img src={img.stickerBubble} alt="" class="pointer-events-none absolute right-[18%] -top-6 z-30 h-auto w-[26%] rotate-[6deg] select-none drop-shadow-[0_3px_8px_rgba(20,42,70,0.14)]" aria-hidden="true" />
+                  <img src={img.stickerBubble} alt="" class="pointer-events-none absolute right-[18%] -top-6 z-30 h-auto w-[26%] rotate-[6deg] select-none" aria-hidden="true" />
                   {/* 放大镜贴纸，叠在小米打卡照上（右下角） */}
-                  <img src={img.stickerMagnifier} alt="" class="pointer-events-none absolute right-[8%] top-[46%] z-40 h-auto w-[24%] rotate-[-10deg] select-none drop-shadow-[0_3px_8px_rgba(20,42,70,0.16)]" aria-hidden="true" />
+                  <img src={img.stickerMagnifier} alt="" class="pointer-events-none absolute right-[8%] top-[46%] z-40 h-auto w-[24%] rotate-[-10deg] select-none" aria-hidden="true" />
                   {/* 蓝色夹子，左侧中部，叠在悉尼照与海报照之间 */}
-                  <img src={img.stickerClip2} alt="" class="pointer-events-none absolute -left-3 top-[44%] z-30 h-auto w-[18%] rotate-[-8deg] select-none drop-shadow-[0_2px_6px_rgba(20,42,70,0.14)] md:-left-5" aria-hidden="true" />
+                  <img src={img.stickerClip2} alt="" class="pointer-events-none absolute -left-3 top-[44%] z-30 h-auto w-[18%] rotate-[-8deg] select-none md:-left-5" aria-hidden="true" />
                 </div>
               </div>
               <div class="md:col-span-7">
@@ -171,15 +171,15 @@ const STAGES = aboutStages.length; // 当前 2，之后增加时自动生效
               <div class="md:col-span-5">
                 <div class="relative mx-auto w-full max-w-[340px] md:mx-0 md:max-w-none" style="height: 420px;">
                   {/* 单张拍立得：天鹅湖照，微微左倾 */}
-                  <div class="polaroid absolute left-0 top-[8%] w-[85%] p-3 pb-14 shadow-[0_18px_40px_-12px_rgba(20,42,70,0.18),0_4px_10px_rgba(20,42,70,0.06)] md:p-4 md:pb-16" style="background:#D6EFFF; transform:rotate(-2deg); z-index:1;">
+                  <div class="polaroid absolute left-0 top-[8%] w-[85%] p-3 pb-14 md:p-4 md:pb-16" style="background:#D6EFFF; transform:rotate(-2deg); z-index:1;">
                     <div class="overflow-hidden rounded-[2px]">
                       <img src={img.stage4Swan} alt="天鹅湖" class="block h-auto w-full object-cover" width="900" height="900" loading="lazy" />
                     </div>
                   </div>
                   {/* 钢笔贴纸，照片右上角斜伸出 */}
-                  <img src={img.stickerPen} alt="" class="pointer-events-none absolute right-[2%] top-[4%] z-20 h-auto w-[22%] rotate-[30deg] select-none drop-shadow-[0_3px_8px_rgba(20,42,70,0.16)]" aria-hidden="true" />
+                  <img src={img.stickerPen} alt="" class="pointer-events-none absolute right-[2%] top-[4%] z-20 h-auto w-[22%] rotate-[30deg] select-none" aria-hidden="true" />
                   {/* 文件夹贴纸，左下角 */}
-                  <img src={img.stickerFolder} alt="" class="pointer-events-none absolute bottom-[10%] -left-4 z-20 h-auto w-[32%] rotate-[-6deg] select-none drop-shadow-[0_3px_8px_rgba(20,42,70,0.14)] md:-left-6" aria-hidden="true" />
+                  <img src={img.stickerFolder} alt="" class="pointer-events-none absolute bottom-[10%] -left-4 z-20 h-auto w-[32%] rotate-[-6deg] select-none md:-left-6" aria-hidden="true" />
                 </div>
               </div>
               <div class="md:col-span-7 md:pt-10">

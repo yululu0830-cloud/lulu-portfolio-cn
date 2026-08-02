@@ -51,14 +51,12 @@
 .marquee-left:has(.award-card:hover),
 .marquee-right:has(.award-card:hover) { animation-play-state: paused; }
 
-/* 单卡上浮：只做 translateY + shadow，不影响行内其他元素 */
+/* 单卡上浮：只做 translateY，无投影 */
 .award-card {
-  transition: transform  0.28s cubic-bezier(0.22, 1, 0.36, 1),
-              box-shadow  0.28s cubic-bezier(0.22, 1, 0.36, 1);
+  transition: transform  0.28s cubic-bezier(0.22, 1, 0.36, 1);
 }
 .award-card:hover {
   transform: translateY(-5px);
-  box-shadow: 0 10px 24px rgba(20, 42, 70, 0.13);
 }
 
 @media (prefers-reduced-motion: reduce) {

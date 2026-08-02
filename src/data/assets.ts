@@ -31,6 +31,51 @@ export const workBilibiliLinks = [
   "https://www.bilibili.com/video/BV1PT546WEsq/?share_source=copy_web&vd_source=f5a7fd259d05ab5f69de4ed76e9db9e6",
 ] as const;
 
+/** PDF 作品集：封面 + PDF 链接（点击卡片在新标签打开 PDF） */
+const pdfBase = "/pdf";
+export const workPdfs = [
+  {
+    title: "小米汽车 APP 社区体验优化设计",
+    tag: "C端",
+    desc: "社区体验优化，包括内容浏览体验优化、深度内容消费优化、自驱 AI 提效探索三个部分。",
+    cover: `${workImg}/${encodeURIComponent("小米汽车APP-社区体验优化设计.png")}`,
+    pdf: `${pdfBase}/${encodeURIComponent("小米汽车APP-社区体验优化设计.pdf")}`,
+    bg: "bg-[#cdeeff]",
+  },
+  {
+    title: "小米汽车 HUD 抬头显示界面改版",
+    tag: "HMI",
+    desc: "开展 6+ 用户深访，洞察用户需求并提炼 4 项关键设计方向，结合 KANO 模型完成需求优先级排序，支撑 HUD 改版策略制定。",
+    cover: `${workImg}/${encodeURIComponent("小米汽车-HUD抬头显示界面改版.png")}`,
+    pdf: `${pdfBase}/${encodeURIComponent("小米汽车-HUD抬头显示界面改版.pdf")}`,
+    bg: "bg-[#dde8f0]",
+  },
+  {
+    title: "知乎会员 · 截断墙广告转化",
+    tag: "C端",
+    desc: "聚焦广告解锁前、中、后的完整体验链路：前置降低选择成本，中段强化广告价值感知，从而提升广告解锁转化与阅读连续性。",
+    cover: `${workImg}/${encodeURIComponent("盐言故事-高吸引力标题生成skill.png")}`,
+    pdf: `${pdfBase}/${encodeURIComponent("知乎会员-截断墙广告转化.pdf")}`,
+    bg: "bg-[#ffe3df]",
+  },
+  {
+    title: "盐言故事 · 高吸引力标题生成 Skill",
+    tag: "AI",
+    desc: "针对小说标题吸引力不强的问题，梳理高吸引力标题结构，沉淀标题生成 Skill，让短篇故事标题更有点击欲。",
+    cover: `${workImg}/${encodeURIComponent("知乎会员-截断墙广告转化.png")}`,
+    pdf: `${pdfBase}/${encodeURIComponent("盐言故事-高吸引力标题生成skill.pdf")}`,
+    bg: "bg-[#e9e3c9]",
+  },
+  {
+    title: "AI 提效与设计资产工程化建设",
+    tag: "AI",
+    desc: "面向设计团队的 AI 提效实践与设计资产工程化落地方案。",
+    cover: `${workImg}/${encodeURIComponent("AI 提效与设计资产工程化建设.png")}`,
+    pdf: `${pdfBase}/${encodeURIComponent("AI 提效与设计资产工程化建设.pdf")}`,
+    bg: "bg-[#e8ecf4]",
+  },
+] as const;
+
 export const home = {
   work: `${img}/work.png`,
   software: `${img}/software.png`,
